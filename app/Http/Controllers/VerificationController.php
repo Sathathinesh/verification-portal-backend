@@ -9,24 +9,25 @@ use Illuminate\Http\Response;
 use App\Http\Resources\VerificationResource;
 class VerificationController extends Controller
 {
-  private VerificationInterface $verification;
+    private VerificationInterface $verification;
 
-  public function __construct(VerificationInterface $verification)
-  {
-    $this->verification = $verification;
-  }
-
-  public function verify(Request $request)
-  {
-    $data = $request->all();
-
-    // Perform verification
-    $verificationResult = $this->verification->performVerification($data);
-
-    // Store verification result in database
-    $this->verification->storeVerificationResult($verificationResult);
-
-    // Return response with transformed data
-    return new VerificationResource($verificationResult);
+    public function __construct(VerificationInterface $verification)
+    {
+      $this->verification = $verification;
     }
+
+    public function verify(Request $request)
+    {
+      $data = $request->all();
+
+      // Perform verification
+      $verificationResult = $this->verification->performVerification($data);
+
+      // Store verification result in database
+      $this->verification->storeVerificationResult($verificationResult);
+
+      // Return response with transformed data
+      return new VerificationResource($verificationResult);
+    }
+      
 }
