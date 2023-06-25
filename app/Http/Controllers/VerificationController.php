@@ -2,34 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VerificationResult;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use App\Repositories\Verifications\VerificationInterface;
-
+use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Response;
+use App\Http\Resources\VerificationResource;
 class VerificationController extends Controller
 {
-     private $verification = null;
+  private VerificationInterface $verification;
 
-      public function __construct(VerificationInterface $verification)
-      {
+  public function __construct(VerificationInterface $verification)
+  {
+    $this->verification = $verification;
+  }
 
-        $this->verification = $verification;
-      }
+  public function verify(Request $request)
+  {
+    $data = $request->all();
 
-    public function verify(Request $request)
-    {
+    // Perform verification
+    $verificationResult = $this->verification->performVerification($data);
 
-        // Perform verification
-        $verificationResult = $this->verification->performVerification($request);
+    // Store verification result in database
+    $this->verification->storeVerificationResult($verificationResult);
 
-        // Store verification result in database
-        $this->verification->storeVerificationResult($verificationResult);
-
-        // Return response
-        return response()->json($verificationResult, 200);
-        //return response()->json('thinesh', 200);
+    // Return response with transformed data
+    return new VerificationResource($verificationResult);
     }
-
 }
