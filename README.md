@@ -37,15 +37,12 @@ Here is an example of the JSON structure that can be sent to the API:
     "type": "SHA3MerkleProof",
     "targetHash": "288f94aadadf486cfdad84b9f4305f7d51eac62db18376d48180cc1dd2047a0e"
   }
-}```
-
-
+}`
 
 ## Response
 
 The API response will be in the following format:
 
-```json
 {
     "data": {
         "issuer": "Accredify", // name of the issuer of the file
