@@ -13,40 +13,44 @@ To use this API, make sure you have the following requirements:
 ## Sample JSON
 
 Here is an example of the JSON structure that can be sent to the API:
+
+```json
 {
-"data": {
-"id": "63c79bd9303530645d1cca00",
-"name": "Certificate of Completion",
-"recipient": {
-"name": "Marty McFly",
-"email": "marty.mcfly@gmail.com"
-},
-"issuer": {
-"name": "Accredify",
-"identityProof": {
-"type": "DNS-DID",
-"key": "did:ethr:0x05b642ff12a4ae545357d82ba4f786f3aed84214#controller",
-"location": "ropstore.accredify.io"
+  "data": {
+    "id": "63c79bd9303530645d1cca00",
+    "name": "Certificate of Completion",
+    "recipient": {
+      "name": "Marty McFly",
+      "email": "marty.mcfly@gmail.com"
+    },
+    "issuer": {
+      "name": "Accredify",
+      "identityProof": {
+        "type": "DNS-DID",
+        "key": "did:ethr:0x05b642ff12a4ae545357d82ba4f786f3aed84214#controller",
+        "location": "ropstore.accredify.io"
+      }
+    },
+    "issued": "2022-12-23T00:00:00+08:00"
+  },
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "288f94aadadf486cfdad84b9f4305f7d51eac62db18376d48180cc1dd2047a0e"
+  }
 }
-},
-"issued": "2022-12-23T00:00:00+08:00"
-},
-"signature": {
-"type": "SHA3MerkleProof",
-"targetHash": "288f94aadadf486cfdad84b9f4305f7d51eac62db18376d48180cc1dd2047a0e"
-}
-}
+
 
 
 ## Response
 
 The API response will be in the following format:
 
+```json
 {
-"data": {
-"issuer": "Accredify", // name of the issuer of the file
-"result": "verified" // allowed values are "verified", "invalid_recipient", "invalid_issuer", or "invalid_signature"
-}
+    "data": {
+        "issuer": "Accredify", // name of the issuer of the file
+        "result": "verified" // allowed values are "verified", "invalid_recipient", "invalid_issuer", or "invalid_signature"
+    }
 }
 
 ## Installation
@@ -70,11 +74,11 @@ Test the application run the command indide the project folder : `./vendor/bin/p
 ## Contributing
 If you'd like to contribute to this project, please follow these steps:
 
--Fork the repository.
--Create a new branch.
--Make your changes and commit them.
--Push your changes to your forked repository.
--Submit a pull request.
+- Fork the repository.
+- Create a new branch.
+- Make your changes and commit them.
+- Push your changes to your forked repository.
+- Submit a pull request.
 
 ## About Laravel
 
