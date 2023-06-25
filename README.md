@@ -1,4 +1,68 @@
-## verification-portal
+# verification-portal
+
+## Requirements
+Build a REST API with Laravel where an authenticated user sends a JSON file and receives a verification result as a response
+
+## Sample JSON 
+`{
+  "data": {
+    "id": "63c79bd9303530645d1cca00",
+    "name": "Certificate of Completion",
+    "recipient": {
+      "name": "Marty McFly",
+      "email": "marty.mcfly@gmail.com"
+    },
+    "issuer": {
+      "name": "Accredify",
+      "identityProof": {
+        "type": "DNS-DID",
+        "key": "did:ethr:0x05b642ff12a4ae545357d82ba4f786f3aed84214#controller",
+        "location": "ropstore.accredify.io"
+      }
+    },
+    "issued": "2022-12-23T00:00:00+08:00"
+  },
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "288f94aadadf486cfdad84b9f4305f7d51eac62db18376d48180cc1dd2047a0e"
+  }
+}`
+
+## Response
+`{
+  "data": {
+    "issuer": "Accredify", // name of the issuer of the file
+    "result": "verified" // allowed values are "verified", "invalid_recipient", "invalid_issuer", or "invalid_signature"
+  }
+}`
+
+## Installation
+Clone the repository: `git clone https://github.com/Sathathinesh/verification-portal-backend.git`
+
+Navigate to the project directory: `cd verification-portal-backend`
+
+Copy the example environment file and update the necessary configurations: `cp .env.example .env`
+
+Install the dependencies: `composer install`
+
+Set up the database: `php artisan migrate`
+
+Serve the application: `php artisan serve`
+
+Test http://localhost:8000/api/verification in your Postman.
+
+## Testing
+Test the application run the command indide the project folder : `./vendor/bin/phpunit`
+
+## Contributing
+If you'd like to contribute to this project, please follow these steps:
+
+-Fork the repository.
+-Create a new branch.
+-Make your changes and commit them.
+-Push your changes to your forked repository.
+-Submit a pull request.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
@@ -54,65 +118,3 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-## Requirements
-Build a REST API with Laravel where an authenticated user sends a JSON file and receives a verification result as a response
-
-## Sample JSON 
-{
-  "data": {
-    "id": "63c79bd9303530645d1cca00",
-    "name": "Certificate of Completion",
-    "recipient": {
-      "name": "Marty McFly",
-      "email": "marty.mcfly@gmail.com"
-    },
-    "issuer": {
-      "name": "Accredify",
-      "identityProof": {
-        "type": "DNS-DID",
-        "key": "did:ethr:0x05b642ff12a4ae545357d82ba4f786f3aed84214#controller",
-        "location": "ropstore.accredify.io"
-      }
-    },
-    "issued": "2022-12-23T00:00:00+08:00"
-  },
-  "signature": {
-    "type": "SHA3MerkleProof",
-    "targetHash": "288f94aadadf486cfdad84b9f4305f7d51eac62db18376d48180cc1dd2047a0e"
-  }
-}
-### Response
-{
-  "data": {
-    "issuer": "Accredify", // name of the issuer of the file
-    "result": "verified" // allowed values are "verified", "invalid_recipient", "invalid_issuer", or "invalid_signature"
-  }
-}
-
-## Installation
-Clone the repository: `git clone https://github.com/Sathathinesh/verification-portal-backend.git`
-
-Navigate to the project directory: `cd verification-portal-backend`
-
-Copy the example environment file and update the necessary configurations: `cp .env.example .env`
-
-Install the dependencies: `composer install`
-
-Set up the database: `php artisan migrate`
-
-Serve the application: `php artisan serve`
-
-Test http://localhost:8000/api/verification in your Postman.
-
-## Testing
-Test the application run the command indide the project folder : `./vendor/bin/phpunit`
-
-## Contributing
-If you'd like to contribute to this project, please follow these steps:
-
-Fork the repository.
-Create a new branch.
-Make your changes and commit them.
-Push your changes to your forked repository.
-Submit a pull request.
