@@ -1,40 +1,53 @@
-# verification-portal
+# Verification Portal
+
+This repository contains a REST API built with Laravel for verifying JSON files. Authenticated users can send a JSON file and receive a verification result as a response.
 
 ## Requirements
-Build a REST API with Laravel where an authenticated user sends a JSON file and receives a verification result as a response
 
-## Sample JSON 
-`{
-  "data": {
-    "id": "63c79bd9303530645d1cca00",
-    "name": "Certificate of Completion",
-    "recipient": {
-      "name": "Marty McFly",
-      "email": "marty.mcfly@gmail.com"
-    },
-    "issuer": {
-      "name": "Accredify",
-      "identityProof": {
-        "type": "DNS-DID",
-        "key": "did:ethr:0x05b642ff12a4ae545357d82ba4f786f3aed84214#controller",
-        "location": "ropstore.accredify.io"
-      }
-    },
-    "issued": "2022-12-23T00:00:00+08:00"
-  },
-  "signature": {
-    "type": "SHA3MerkleProof",
-    "targetHash": "288f94aadadf486cfdad84b9f4305f7d51eac62db18376d48180cc1dd2047a0e"
-  }
-}`
+To use this API, make sure you have the following requirements:
+
+- Laravel (minimum version X.X.X)
+- PHP (minimum version X.X.X)
+- Composer
+
+## Sample JSON
+
+Here is an example of the JSON structure that can be sent to the API:
+{
+"data": {
+"id": "63c79bd9303530645d1cca00",
+"name": "Certificate of Completion",
+"recipient": {
+"name": "Marty McFly",
+"email": "marty.mcfly@gmail.com"
+},
+"issuer": {
+"name": "Accredify",
+"identityProof": {
+"type": "DNS-DID",
+"key": "did:ethr:0x05b642ff12a4ae545357d82ba4f786f3aed84214#controller",
+"location": "ropstore.accredify.io"
+}
+},
+"issued": "2022-12-23T00:00:00+08:00"
+},
+"signature": {
+"type": "SHA3MerkleProof",
+"targetHash": "288f94aadadf486cfdad84b9f4305f7d51eac62db18376d48180cc1dd2047a0e"
+}
+}
+
 
 ## Response
-`{
-  "data": {
-    "issuer": "Accredify", // name of the issuer of the file
-    "result": "verified" // allowed values are "verified", "invalid_recipient", "invalid_issuer", or "invalid_signature"
-  }
-}`
+
+The API response will be in the following format:
+
+{
+"data": {
+"issuer": "Accredify", // name of the issuer of the file
+"result": "verified" // allowed values are "verified", "invalid_recipient", "invalid_issuer", or "invalid_signature"
+}
+}
 
 ## Installation
 Clone the repository: `git clone https://github.com/Sathathinesh/verification-portal-backend.git`
