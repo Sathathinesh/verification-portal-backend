@@ -11,8 +11,9 @@ class VerificationController extends Controller
 {
     private VerificationInterface $verification;
 
-    public function __construct(VerificationInterface $verification)
-    {
+    public function __construct(
+      VerificationInterface $verification
+      ){
       $this->verification = $verification;
     }
 

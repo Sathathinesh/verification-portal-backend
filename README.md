@@ -2,6 +2,9 @@
 
 This repository contains a REST API built with Laravel for verifying JSON files. Authenticated users can send a JSON file and receive a verification result as a response.
 
+
+You can check ROADMAP Doc in `ROADMAP.md` file. 
+
 ## Requirements
 
 To use this API, make sure you have the following requirements:
