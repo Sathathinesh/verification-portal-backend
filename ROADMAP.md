@@ -17,6 +17,6 @@ This document describes the current status and the upcoming milestones of the Ve
 
 #### Future Milestones Summary
 
-**[Implement Auth Part]**
-**[Store More Details About Verifiable File]**
-**[Implement Notification Systems for Verification Results]**
+- Implement Auth Part
+- Store More Details About Verifiable File
+- Implement Notification Systems for Verification Results
