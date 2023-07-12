@@ -43,8 +43,8 @@ class VerificationRepository implements VerificationInterface
 
     public function storeVerificationResult(array $verificationResult)
     {
-        $userId = Auth::user()->id;
-    
+        //$userId = Auth::user()->id;
+        $userId = 1;
         // Store the verification result in the database
         VerificationResult::create([
             'user_id' => $userId,
@@ -162,6 +162,9 @@ class VerificationRepository implements VerificationInterface
         $data = [$key => $value];
 
         // Convert the array to a JSON string
+        // generate a JSON string that retains the original form of forward slashes and 
+        //Unicode characters without escaping them.
+        // control how certain characters are represented in the resulting JSON string
         $json_string = json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
         // Compute the SHA256 hash of the JSON string
